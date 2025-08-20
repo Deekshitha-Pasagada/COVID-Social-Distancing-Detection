@@ -25,3 +25,29 @@ pip install -r requirements.txt
 The original project pinned older versions (TF 2.1.0, numpy 1.18.3). If you hit version conflicts, try those exact pins or use a recent CPU-only TF and adjust code accordingly.
 
 # Download a detection model
+Place a **TensorFlow Object Detection (frozen inference graph)** under `models/`, e.g.:
+```
+models/
+└─ faster_rcnn_inception_v2_coco_2018_01_28/
+   └─ frozen_inference_graph.pb
+```
+At runtime, the app will list subfolders in `models/` and prompt you to choose one.
+
+# Calibrate perspective (optional but recommended)
+Update `conf/config_birdview.yml` (or `conf/config.yml`) with four corner points of the ground plane in your scene.  
+Use `src/calibrate_with_mouse.py` to click points on a reference frame and copy the coordinates into the YAML.
+
+# Run
+```bash
+# from project root
+python src/social_distanciation_video_detection.py
+# - it will prompt you to select a model folder under 'models/'
+# - it will process the video (default: video/PETS2009.avi)
+# - it writes two outputs to 'output/': original with overlays + bird’s-eye view
+```
+Press `q` to stop the video loop.
+
+# Notes
+- Outputs are saved to `output/video.avi` and `output/bird_view.avi` (MJPG codec).
+- If using your own video, place it under `video/` and adjust paths if needed.
+- Distance thresholds, colors, and drawing options are set in the main script.
