@@ -17,11 +17,11 @@ Real-time social distancing analyzer using TensorFlow Object Detection and OpenC
   ```bash
   python -m venv .venv # Windows: .venv\Scripts\activate
   source .venv/bin/activate # macOS/Linux
-
+  ```
 2) Install Dependencies:
 ```bash
 pip install -r requirements.txt
-
+```
 The original project pinned older versions (TF 2.1.0, numpy 1.18.3). If you hit version conflicts, try those exact pins or use a recent CPU-only TF and adjust code accordingly.
 
 # Download a detection model
